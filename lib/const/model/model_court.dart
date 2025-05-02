@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../value/keys.dart';
 
 class ModelCourt {
   /// 코트 고유 ID
@@ -22,10 +23,10 @@ class ModelCourt {
   final String reservationUrl;
 
   /// 좋아요한 사용자 UID 목록
-  final List<String> likedUserUids;
+  final List<String>? likedUserUids;
 
   /// 코트 사진 URL 목록
-  final List<String> imageUrls;
+  final List<String>? imageUrls;
 
   /// 부가 정보 (예: 주차 가능 여부, 조명 유무 등)
   final Map<String, dynamic>? extraInfo;
@@ -39,42 +40,42 @@ class ModelCourt {
     required this.courtAddress,
     required this.courtInfo,
     required this.reservationUrl,
-    required this.likedUserUids,
-    required this.imageUrls,
+    this.likedUserUids,
+    this.imageUrls,
     this.extraInfo,
   });
 
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
     return ModelCourt(
-      uid: json['uid'] as String,
-      dateCreate: json['dateCreate'] is Timestamp
-          ? json['dateCreate']
-          : Timestamp.fromMillisecondsSinceEpoch(json['dateCreate']),
-      latitude: json['latitude']?.toDouble() ?? 0.0,
-      longitude: json['longitude']?.toDouble() ?? 0.0,
-      courtName: json['courtName'] ?? '',
-      courtAddress: json['courtAddress'] ?? '',
-      courtInfo: json['courtInfo'] ?? '',
-      reservationUrl: json['reservationUrl'] ?? '',
-      likedUserUids: List<String>.from(json['likedUserUids'] ?? []),
-      imageUrls: List<String>.from(json['imageUrls'] ?? []),
-      extraInfo: json['extraInfo'] as Map<String, dynamic>?,
+      uid: json[keyUid] as String,
+      dateCreate: json[keyDateCreate] is Timestamp
+          ? json[keyDateCreate]
+          : Timestamp.fromMillisecondsSinceEpoch(json[keyDateCreate]),
+      latitude: json[keyLatitude]?.toDouble() ?? 0.0,
+      longitude: json[keyLongitude]?.toDouble() ?? 0.0,
+      courtName: json[keyCourtName] ?? '',
+      courtAddress: json[keyCourtAddress] ?? '',
+      courtInfo: json[keyCourtInfo] ?? '',
+      reservationUrl: json[keyReservationUrl] ?? '',
+      likedUserUids: List<String>.from(json[keyLikedUserUids] ?? []),
+      imageUrls: List<String>.from(json[keyImageUrls] ?? []),
+      extraInfo: json[keyExtraInfo] as Map<String, dynamic>?,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'uid': uid,
-      'dateCreate': dateCreate,
-      'latitude': latitude,
-      'longitude': longitude,
-      'courtName': courtName,
-      'courtAddress': courtAddress,
-      'courtInfo': courtInfo,
-      'reservationUrl': reservationUrl,
-      'likedUserUids': likedUserUids,
-      'imageUrls': imageUrls,
-      'extraInfo': extraInfo,
+      keyUid: uid,
+      keyDateCreate: dateCreate,
+      keyLatitude: latitude,
+      keyLongitude: longitude,
+      keyCourtName: courtName,
+      keyCourtAddress: courtAddress,
+      keyCourtInfo: courtInfo,
+      keyReservationUrl: reservationUrl,
+      keyLikedUserUids: likedUserUids,
+      keyImageUrls: imageUrls,
+      keyExtraInfo: extraInfo,
     };
   }
 
