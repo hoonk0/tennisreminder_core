@@ -14,3 +14,4 @@ const String keyReservationUrl = 'reservation_url';
 const String keyLikedUserUids = 'liked_user_uids';
 const String keyImageUrls = 'image_urls';
 const String keyExtraInfo = 'extra_info';
+const String keyUserType = 'user_type';
