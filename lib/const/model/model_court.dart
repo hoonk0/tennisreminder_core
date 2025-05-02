@@ -74,7 +74,7 @@ class ModelCourt {
       keyCourtInfo: courtInfo,
       keyReservationUrl: reservationUrl,
       keyLikedUserUids: likedUserUids,
-      keyImageUrls: imageUrls,
+      keyImageUrls: imageUrls ?? [],
       keyExtraInfo: extraInfo,
     };
   }
