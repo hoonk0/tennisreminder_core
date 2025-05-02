@@ -8,22 +8,16 @@ class ModelUser {
   final Timestamp dateCreate;
   final String? email;
   final String? pw;
-  final int? birthYear;
   final LoginType loginType;
   final UserType userType;
-  final Map<String, Timestamp>? bookMark;
-  final Map<String, Timestamp>? wrongAnswers;
 
   const ModelUser({
     required this.uid,
     required this.dateCreate,
     this.email,
     this.pw,
-    this.birthYear,
     required this.loginType,
     this.userType = UserType.user,
-    this.bookMark,
-    this.wrongAnswers,
   });
 
   factory ModelUser.fromJson(Map<String, dynamic> json) {
@@ -34,15 +28,8 @@ class ModelUser {
           : Timestamp.fromMillisecondsSinceEpoch(json[keyDateCreate]),
       email: json[keyEmail] as String?,
       pw: json[keyPassword] as String?,
-      birthYear: json[keyBirthYear] as int?,
       loginType: LoginType.values.firstWhere((e) => e.name == json[keyLoginType]),
       userType: UserType.values.firstWhere((e) => e.name == json[keyUserType]),
-      bookMark: (json[keyBookMark] as Map?)?.map(
-            (key, value) => MapEntry(key.toString(), value as Timestamp),
-      ),
-      wrongAnswers: (json[keyWrongAnswers] as Map?)?.map(
-            (key, value) => MapEntry(key.toString(), value as Timestamp),
-      ),
     );
   }
 
@@ -52,11 +39,8 @@ class ModelUser {
       keyDateCreate: dateCreate,
       keyEmail: email,
       keyPassword: pw,
-      keyBirthYear: birthYear,
       keyLoginType: loginType.name,
       keyUserType: userType.name,
-      keyBookMark: bookMark ?? {},
-      keyWrongAnswers: wrongAnswers ?? {},
     };
   }
 
@@ -68,19 +52,14 @@ class ModelUser {
     int? birthYear,
     LoginType? loginType,
     UserType? userType,
-    Map<String, Timestamp>? bookMark,
-    Map<String, Timestamp>? wrongAnswers,
   }) {
     return ModelUser(
       uid: uid ?? this.uid,
       dateCreate: dateCreate ?? this.dateCreate,
       email: email ?? this.email,
       pw: pw ?? this.pw,
-      birthYear: birthYear ?? this.birthYear,
       loginType: loginType ?? this.loginType,
       userType: userType ?? this.userType,
-      bookMark: bookMark ?? this.bookMark,
-      wrongAnswers: wrongAnswers ?? this.wrongAnswers,
     );
   }
 }
