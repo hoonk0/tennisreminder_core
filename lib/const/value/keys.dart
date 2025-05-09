@@ -16,3 +16,4 @@ const String keyImageUrls = 'image_urls';
 const String keyExtraInfo = 'extra_info';
 const String keyUserType = 'user_type';
 const authentication_wait = 'authentication_wait';
+const keyCourt = 'court';
