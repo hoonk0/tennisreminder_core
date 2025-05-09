@@ -164,5 +164,66 @@ class UtilsEnum {
     }
   }
 
+  /// 서울 자치구 → 한글명 반환
+  static String getNameFromSeoulDistrict(SeoulDistrict district) {
+    switch (district) {
+      case SeoulDistrict.all:
+        return '전체';
+      case SeoulDistrict.gangnam:
+        return '강남구';
+      case SeoulDistrict.gangdong:
+        return '강동구';
+      case SeoulDistrict.gangbuk:
+        return '강북구';
+      case SeoulDistrict.gangseo:
+        return '강서구';
+      case SeoulDistrict.gwanak:
+        return '관악구';
+      case SeoulDistrict.gwangjin:
+        return '광진구';
+      case SeoulDistrict.guro:
+        return '구로구';
+      case SeoulDistrict.geumcheon:
+        return '금천구';
+      case SeoulDistrict.nowon:
+        return '노원구';
+      case SeoulDistrict.dobong:
+        return '도봉구';
+      case SeoulDistrict.dongdaemun:
+        return '동대문구';
+      case SeoulDistrict.dongjak:
+        return '동작구';
+      case SeoulDistrict.mapo:
+        return '마포구';
+      case SeoulDistrict.seodaemun:
+        return '서대문구';
+      case SeoulDistrict.seocho:
+        return '서초구';
+      case SeoulDistrict.seongdong:
+        return '성동구';
+      case SeoulDistrict.seongbuk:
+        return '성북구';
+      case SeoulDistrict.songpa:
+        return '송파구';
+      case SeoulDistrict.yangcheon:
+        return '양천구';
+      case SeoulDistrict.yeongdeungpo:
+        return '영등포구';
+      case SeoulDistrict.yongsan:
+        return '용산구';
+      case SeoulDistrict.eunpyeong:
+        return '은평구';
+      case SeoulDistrict.jongno:
+        return '종로구';
+      case SeoulDistrict.jung:
+        return '중구';
+      case SeoulDistrict.jungnang:
+        return '중랑구';
+
+    }
+  }
+
+
+
 
 }
