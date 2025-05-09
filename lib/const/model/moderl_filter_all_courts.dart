@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../value/enum.dart';
 
 class ModelCourtFilter {
@@ -12,4 +14,13 @@ class ModelCourtFilter {
       'selectedDistricts': selectedDistricts.map((e) => e.name).toList(),
     };
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is ModelCourtFilter &&
+              listEquals(selectedDistricts, other.selectedDistricts);
+
+  @override
+  int get hashCode => selectedDistricts.hashCode;
 }
