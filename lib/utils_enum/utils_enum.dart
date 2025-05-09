@@ -157,6 +157,8 @@ class UtilsEnum {
         return 'Kakao';
       case LoginType.naver:
         return 'Naver';
+      case LoginType.google:
+        return 'Google';
       case LoginType.email:
         return 'Email';
     }
