@@ -16,6 +16,7 @@ class ModelCourtFilter {
     };
   }
 
+  //
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
