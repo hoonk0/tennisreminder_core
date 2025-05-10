@@ -31,6 +31,8 @@ class ModelCourt {
   /// 부가 정보 (예: 주차 가능 여부, 조명 유무 등)
   final Map<String, dynamic>? extraInfo;
 
+  final String? courtDistrict;
+
   const ModelCourt({
     required this.uid,
     required this.dateCreate,
@@ -43,9 +45,13 @@ class ModelCourt {
     this.likedUserUids,
     this.imageUrls,
     this.extraInfo,
+    this.courtDistrict,
   });
 
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
+    final address = json[keyCourtAddress] ?? '';
+    final addressParts = address.split(' ');
+    final district = addressParts.length > 1 ? addressParts[1] : '';
     return ModelCourt(
       uid: json[keyUid] as String,
       dateCreate: json[keyDateCreate] is Timestamp
@@ -60,6 +66,7 @@ class ModelCourt {
       likedUserUids: List<String>.from(json[keyLikedUserUids] ?? []),
       imageUrls: List<String>.from(json[keyImageUrls] ?? []),
       extraInfo: json[keyExtraInfo] as Map<String, dynamic>?,
+      courtDistrict: district,
     );
   }
 
@@ -76,6 +83,7 @@ class ModelCourt {
       keyLikedUserUids: likedUserUids,
       keyImageUrls: imageUrls ?? [],
       keyExtraInfo: extraInfo,
+      keyCourtDistrict: courtDistrict,
     };
   }
 
@@ -92,6 +100,7 @@ class ModelCourt {
     List<String>? likedUserUids,
     List<String>? imageUrls,
     Map<String, dynamic>? extraInfo,
+    String? courtDistrict,
   }) {
     return ModelCourt(
       uid: uid ?? this.uid,
@@ -105,6 +114,7 @@ class ModelCourt {
       likedUserUids: likedUserUids ?? this.likedUserUids,
       imageUrls: imageUrls ?? this.imageUrls,
       extraInfo: extraInfo ?? this.extraInfo,
+      courtDistrict: courtDistrict ?? this.courtDistrict,
     );
   }
 }

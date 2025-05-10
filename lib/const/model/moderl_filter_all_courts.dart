@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../value/enum.dart';
+import '../value/keys.dart';
 
 class ModelCourtFilter {
   final List<SeoulDistrict> selectedDistricts;
@@ -11,7 +12,7 @@ class ModelCourtFilter {
 
   Map<String, dynamic> toJson() {
     return {
-      'selectedDistricts': selectedDistricts.map((e) => e.name).toList(),
+      keyCourtDistrict: selectedDistricts.map((e) => e.name).toList(),
     };
   }
 
