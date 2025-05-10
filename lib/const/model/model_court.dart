@@ -48,6 +48,7 @@ class ModelCourt {
     this.courtDistrict,
   });
 
+  //
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
     final address = json[keyCourtAddress] ?? '';
     final addressParts = address.split(' ');
