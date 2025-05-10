@@ -23,3 +23,4 @@ const keyCourtUid = 'court_uid';
 const keyAlarmWeekday = 'weekday';
 const keyAlarmHour = 'hour';
 const keyAlarmMinute = 'minute';
+const keyCourtAlarms = 'court_alarms';
