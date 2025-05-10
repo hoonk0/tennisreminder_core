@@ -223,6 +223,26 @@ class UtilsEnum {
     }
   }
 
+  /// 요일 enum → 한글명 반환
+  static String getNameFromWeekday(Weekday weekday) {
+    switch (weekday) {
+      case Weekday.monday:
+        return '월요일';
+      case Weekday.tuesday:
+        return '화요일';
+      case Weekday.wednesday:
+        return '수요일';
+      case Weekday.thursday:
+        return '목요일';
+      case Weekday.friday:
+        return '금요일';
+      case Weekday.saturday:
+        return '토요일';
+      case Weekday.sunday:
+        return '일요일';
+    }
+  }
+
 
 
 

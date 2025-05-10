@@ -44,6 +44,17 @@ enum SeoulDistrict {
 
 }
 
+/// 요일 (월~일)
+enum Weekday {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
+}
+
 /*
 /// 좋은몸 언론사 기사유형
 enum ArticleType {
