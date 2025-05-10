@@ -116,7 +116,9 @@ class ModelCourt {
       likedUserUids: likedUserUids ?? this.likedUserUids,
       imageUrls: imageUrls ?? this.imageUrls,
       extraInfo: extraInfo ?? this.extraInfo,
-      courtDistrict: courtDistrict ?? this.courtDistrict,
+      courtDistrict: (courtAddress ?? this.courtAddress).split(' ').length > 1
+          ? (courtAddress ?? this.courtAddress).split(' ')[1]
+          : '',
     );
   }
 }
