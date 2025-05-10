@@ -167,8 +167,8 @@ class UtilsEnum {
   /// 서울 자치구 → 한글명 반환
   static String getNameFromSeoulDistrict(SeoulDistrict district) {
     switch (district) {
-      case SeoulDistrict.all:
-        return '전체';
+/*      case SeoulDistrict.all:
+        return '전체';*/
       case SeoulDistrict.gangnam:
         return '강남구';
       case SeoulDistrict.gangdong:

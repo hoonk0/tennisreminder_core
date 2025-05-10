@@ -15,7 +15,7 @@ enum UserType {
 
 /// 서울특별시 자치구
 enum SeoulDistrict {
-  all,
+  //all,
   gangnam,       // 강남구
   gangdong,      // 강동구
   gangbuk,       // 강북구
