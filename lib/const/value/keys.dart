@@ -24,3 +24,6 @@ const keyAlarmWeekday = 'weekday';
 const keyAlarmHour = 'hour';
 const keyAlarmMinute = 'minute';
 const keyCourtAlarms = 'court_alarms';
+const keyFcmToken = "fcm_token";
+const keyAlarmEnabled = "alarm_enabled";
+const keyAlarmDatecreate = "alarm_date_create";
