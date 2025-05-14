@@ -1,37 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../value/keys.dart';
+import 'model_court_alarm.dart';
 
 class ModelCourt {
-  /// 코트 고유 ID
   final String uid;
-  /// 생성 날짜
   final Timestamp dateCreate;
-
-  /// 코트 위치 위도
   final double latitude;
-  /// 코트 위치 경도
   final double longitude;
-
-  /// 코트 이름
   final String courtName;
-  /// 코트 주소
   final String courtAddress;
-  /// 코트 정보
   final String courtInfo;
-
-  /// 예약 페이지 링크
   final String reservationUrl;
-
-  /// 좋아요한 사용자 UID 목록
   final List<String>? likedUserUids;
-
-  /// 코트 사진 URL 목록
   final List<String>? imageUrls;
-
-  /// 부가 정보 (예: 주차 가능 여부, 조명 유무 등)
   final Map<String, dynamic>? extraInfo;
-
   final String? courtDistrict;
+  final List<ModelCourtAlarm>? courtAlarms; // ✅ 알림 리스트 추가
 
   const ModelCourt({
     required this.uid,
@@ -46,9 +30,9 @@ class ModelCourt {
     this.imageUrls,
     this.extraInfo,
     this.courtDistrict,
+    this.courtAlarms,
   });
 
-  //
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
     final address = json[keyCourtAddress] ?? '';
     final addressParts = address.split(' ');
@@ -68,9 +52,11 @@ class ModelCourt {
       imageUrls: List<String>.from(json[keyImageUrls] ?? []),
       extraInfo: json[keyExtraInfo] as Map<String, dynamic>?,
       courtDistrict: district,
+      courtAlarms: (json[keyCourtAlarms] as List?)
+          ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
+          .toList(),
     );
   }
-  //
 
   Map<String, dynamic> toJson() {
     return {
@@ -86,6 +72,7 @@ class ModelCourt {
       keyImageUrls: imageUrls ?? [],
       keyExtraInfo: extraInfo,
       keyCourtDistrict: courtDistrict,
+      keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(), // ✅ 추가
     };
   }
 
@@ -98,11 +85,11 @@ class ModelCourt {
     String? courtAddress,
     String? courtInfo,
     String? reservationUrl,
-    List<DateTime>? reservationTimes,
     List<String>? likedUserUids,
     List<String>? imageUrls,
     Map<String, dynamic>? extraInfo,
     String? courtDistrict,
+    List<ModelCourtAlarm>? courtAlarms, // ✅ 추가
   }) {
     return ModelCourt(
       uid: uid ?? this.uid,
@@ -119,6 +106,7 @@ class ModelCourt {
       courtDistrict: (courtAddress ?? this.courtAddress).split(' ').length > 1
           ? (courtAddress ?? this.courtAddress).split(' ')[1]
           : '',
+      courtAlarms: courtAlarms ?? this.courtAlarms,
     );
   }
 }

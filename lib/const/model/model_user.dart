@@ -1,9 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../value/enum.dart';
-import '../value/keys.dart';
-import '../model/model_court_alarm.dart';
-
 class ModelUser {
   final String uid;
   final Timestamp dateCreate;
@@ -11,7 +5,6 @@ class ModelUser {
   final String? pw;
   final LoginType loginType;
   final UserType userType;
-  final List<ModelCourtAlarm>? courtAlarms;
 
   const ModelUser({
     required this.uid,
@@ -20,7 +13,6 @@ class ModelUser {
     this.pw,
     required this.loginType,
     this.userType = UserType.user,
-    this.courtAlarms,
   });
 
   factory ModelUser.fromJson(Map<String, dynamic> json) {
@@ -33,9 +25,6 @@ class ModelUser {
       pw: json[keyPassword] as String?,
       loginType: LoginType.values.firstWhere((e) => e.name == json[keyLoginType]),
       userType: UserType.values.firstWhere((e) => e.name == json[keyUserType]),
-      courtAlarms: (json[keyCourtAlarms] as List?)
-          ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
-          .toList(),
     );
   }
 
@@ -47,7 +36,6 @@ class ModelUser {
       keyPassword: pw,
       keyLoginType: loginType.name,
       keyUserType: userType.name,
-      keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(),
     };
   }
 
@@ -56,10 +44,8 @@ class ModelUser {
     Timestamp? dateCreate,
     String? email,
     String? pw,
-    int? birthYear,
     LoginType? loginType,
     UserType? userType,
-    List<ModelCourtAlarm>? courtAlarms,
   }) {
     return ModelUser(
       uid: uid ?? this.uid,
@@ -68,7 +54,6 @@ class ModelUser {
       pw: pw ?? this.pw,
       loginType: loginType ?? this.loginType,
       userType: userType ?? this.userType,
-      courtAlarms: courtAlarms ?? this.courtAlarms,
     );
   }
 }
