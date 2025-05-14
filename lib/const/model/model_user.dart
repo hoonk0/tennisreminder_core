@@ -1,3 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../value/enum.dart';
+import '../value/keys.dart';
+
 class ModelUser {
   final String uid;
   final Timestamp dateCreate;
