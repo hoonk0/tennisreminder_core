@@ -16,6 +16,7 @@ class ModelCourt {
   final Map<String, dynamic>? extraInfo;
   final String? courtDistrict;
   final List<ModelCourtAlarm>? courtAlarms; // ✅ 알림 리스트 추가
+  final Map<String, dynamic>? weatherInfo;
 
   const ModelCourt({
     required this.uid,
@@ -31,6 +32,7 @@ class ModelCourt {
     this.extraInfo,
     this.courtDistrict,
     this.courtAlarms,
+    this.weatherInfo,
   });
 
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,7 @@ class ModelCourt {
       courtAlarms: (json[keyCourtAlarms] as List?)
           ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
           .toList(),
+      weatherInfo: json['weather_info'] as Map<String, dynamic>?,
     );
   }
 
@@ -73,6 +76,7 @@ class ModelCourt {
       keyExtraInfo: extraInfo,
       keyCourtDistrict: courtDistrict,
       keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(), // ✅ 추가
+      keyWeatherInfo: weatherInfo,
     };
   }
 
@@ -90,6 +94,7 @@ class ModelCourt {
     Map<String, dynamic>? extraInfo,
     String? courtDistrict,
     List<ModelCourtAlarm>? courtAlarms, // ✅ 추가
+    Map<String, dynamic>? weatherInfo,
   }) {
     return ModelCourt(
       uid: uid ?? this.uid,
@@ -107,6 +112,7 @@ class ModelCourt {
           ? (courtAddress ?? this.courtAddress).split(' ')[1]
           : '',
       courtAlarms: courtAlarms ?? this.courtAlarms,
+      weatherInfo: weatherInfo ?? this.weatherInfo,
     );
   }
 }
