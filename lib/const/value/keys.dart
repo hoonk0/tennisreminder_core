@@ -28,3 +28,5 @@ const keyFcmToken = "fcm_token";
 const keyAlarmEnabled = "alarm_enabled";
 const keyAlarmDatecreate = "alarm_date_create";
 const keyWeatherInfo = "weather_info";
+const String keyRenderTab = 'render_tab';
+const String keyIsShowMenuBar = 'is_show_menu_bar';
