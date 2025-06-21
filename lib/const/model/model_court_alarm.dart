@@ -33,9 +33,9 @@ class ModelCourtAlarm {
       userUid: json[keyUserUid],
       fcmToken: json[keyFcmToken],
       courtName: json[keyCourtName],
-      alarmWeekday: json[keyAlarmWeekday] as int?,
-      alarmHour: json[keyAlarmHour] as int?,
-      alarmMinute: json[keyAlarmMinute] as int?,
+      alarmWeekday: json[keyAlarmWeekday] is int ? json[keyAlarmWeekday] : null,
+      alarmHour: json[keyAlarmHour] is int ? json[keyAlarmHour] : null,
+      alarmMinute: json[keyAlarmMinute] is int ? json[keyAlarmMinute] : null,
       alarmEnabled: json[keyAlarmEnabled] ?? true,
       alarmDateTime: json['alarmDateTime'] is Timestamp
           ? json['alarmDateTime']
