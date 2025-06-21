@@ -244,6 +244,20 @@ class UtilsEnum {
   }
 
 
-
+  /// 예약 규칙 enum → 한글명 반환
+  static String getNameFromReservationRuleType(ReservationRuleType type) {
+    switch (type) {
+      case ReservationRuleType.fixedDayEachMonth:
+        return '매달 특정일';
+      case ReservationRuleType.daysBeforePlay:
+        return '플레이일 기준 며칠 전';
+      case ReservationRuleType.lastDayOfMonth:
+        return '매달 마지막날';
+      case ReservationRuleType.nthWeekdayOfMonth:
+        return '매달 n번째 요일';
+      case ReservationRuleType.etc:
+        return '기타';
+    }
+  }
 
 }

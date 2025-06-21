@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../value/enum.dart';
 import '../value/keys.dart';
 import 'model_court_alarm.dart';
 
@@ -21,6 +22,7 @@ class ModelCourt {
   final String? courtDistrict;
   final List<ModelCourtAlarm>? courtAlarms; // ✅ 알림 리스트 추가
   final Map<String, dynamic>? weatherInfo;
+  final ReservationRuleType? reservationRuleType;
 
   const ModelCourt({
     required this.uid,
@@ -41,6 +43,7 @@ class ModelCourt {
     this.courtDistrict,
     this.courtAlarms,
     this.weatherInfo,
+    this.reservationRuleType,
   });
 
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
@@ -70,6 +73,9 @@ class ModelCourt {
           ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
           .toList(),
       weatherInfo: json['weather_info'] as Map<String, dynamic>?,
+      reservationRuleType: json['reservationRuleType'] != null
+          ? ReservationRuleType.values.byName(json['reservationRuleType'])
+          : null,
     );
   }
 
@@ -82,17 +88,18 @@ class ModelCourt {
       keyCourtName: courtName,
       keyCourtAddress: courtAddress,
       keyCourtInfo: courtInfo,
-      'courtInfo1': courtInfo1,
-      'courtInfo2': courtInfo2,
-      'courtInfo3': courtInfo3,
-      'courtInfo4': courtInfo4,
-      'reservationSchedule': reservationSchedule,
+      keyCourtInfo1: courtInfo1,
+      keyCourtInfo2: courtInfo2,
+      keyCourtInfo3: courtInfo3,
+      keyCourtInfo4: courtInfo4,
+      keyReservationSchedule: reservationSchedule,
       keyReservationUrl: reservationUrl,
       keyLikedUserUids: likedUserUids,
       keyImageUrls: imageUrls ?? [],
       keyCourtDistrict: courtDistrict,
       keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(), // ✅ 추가
       keyWeatherInfo: weatherInfo,
+      keyReservationRuleType: reservationRuleType?.name,
     };
   }
 
@@ -116,6 +123,7 @@ class ModelCourt {
     String? courtDistrict,
     List<ModelCourtAlarm>? courtAlarms, // ✅ 추가
     Map<String, dynamic>? weatherInfo,
+    ReservationRuleType? reservationRuleType,
   }) {
     return ModelCourt(
       uid: uid ?? this.uid,
@@ -138,6 +146,7 @@ class ModelCourt {
           : '',
       courtAlarms: courtAlarms ?? this.courtAlarms,
       weatherInfo: weatherInfo ?? this.weatherInfo,
+      reservationRuleType: reservationRuleType ?? this.reservationRuleType,
     );
   }
 }
