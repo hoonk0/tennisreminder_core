@@ -24,7 +24,7 @@ class ModelCourtReservation {
     return ModelCourtReservation(
       uid: json[keyReservationUid],
       reservationRuleType: ReservationRuleType.values.byName(json[keyReservationRuleType]),
-      reservationHour: json[keyReservationHour],
+      reservationHour: json.containsKey(keyReservationHour) ? json[keyReservationHour] : null,
       reservationDay: json[keyReservationDay],
       daysBeforePlay: json[keyDaysBeforePlay],
       dateCreated: json[keyReservationDateCreated] != null
@@ -36,7 +36,7 @@ class ModelCourtReservation {
   Map<String, dynamic> toJson() => {
     keyReservationUid: uid,
     keyReservationRuleType: reservationRuleType.name,
-    keyReservationHour: reservationHour,
+    if (reservationHour != null) keyReservationHour: reservationHour,
     keyReservationDay: reservationDay,
     keyDaysBeforePlay: daysBeforePlay,
     keyReservationDateCreated: dateCreated?.millisecondsSinceEpoch,

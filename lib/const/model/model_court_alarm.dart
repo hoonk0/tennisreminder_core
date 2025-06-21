@@ -7,9 +7,9 @@ class ModelCourtAlarm {
   final String userUid;
   final String fcmToken;
   final String courtName;
-  final int alarmWeekday;
-  final int alarmHour;
-  final int alarmMinute;
+  final int? alarmWeekday;
+  final int? alarmHour;
+  final int? alarmMinute;
   final bool alarmEnabled;
   final Timestamp? alarmDateTime;
   final Timestamp dateCreate;
@@ -19,9 +19,9 @@ class ModelCourtAlarm {
     required this.userUid,
     required this.fcmToken,
     required this.courtName,
-    required this.alarmWeekday,
-    required this.alarmHour,
-    required this.alarmMinute,
+    this.alarmWeekday,
+    this.alarmHour,
+    this.alarmMinute,
     this.alarmEnabled = true,
     this.alarmDateTime,
     required this.dateCreate,
@@ -33,9 +33,9 @@ class ModelCourtAlarm {
       userUid: json[keyUserUid],
       fcmToken: json[keyFcmToken],
       courtName: json[keyCourtName],
-      alarmWeekday: json[keyAlarmWeekday],
-      alarmHour: json[keyAlarmHour],
-      alarmMinute: json[keyAlarmMinute],
+      alarmWeekday: json[keyAlarmWeekday] as int?,
+      alarmHour: json[keyAlarmHour] as int?,
+      alarmMinute: json[keyAlarmMinute] as int?,
       alarmEnabled: json[keyAlarmEnabled] ?? true,
       alarmDateTime: json['alarmDateTime'] is Timestamp
           ? json['alarmDateTime']
@@ -53,9 +53,9 @@ class ModelCourtAlarm {
     keyUserUid: userUid,
     keyFcmToken: fcmToken,
     keyCourtName: courtName,
-    keyAlarmWeekday: alarmWeekday,
-    keyAlarmHour: alarmHour,
-    keyAlarmMinute: alarmMinute,
+    if (alarmWeekday != null) keyAlarmWeekday: alarmWeekday,
+    if (alarmHour != null) keyAlarmHour: alarmHour,
+    if (alarmMinute != null) keyAlarmMinute: alarmMinute,
     keyAlarmEnabled: alarmEnabled,
     keyAlarmDateTime: alarmDateTime,
     keyDateCreate: dateCreate,
