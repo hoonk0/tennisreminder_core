@@ -11,6 +11,7 @@ class ModelCourtAlarm {
   final int alarmHour;
   final int alarmMinute;
   final bool alarmEnabled;
+  final Timestamp? alarmDateTime;
   final Timestamp dateCreate;
 
   const ModelCourtAlarm({
@@ -22,6 +23,7 @@ class ModelCourtAlarm {
     required this.alarmHour,
     required this.alarmMinute,
     this.alarmEnabled = true,
+    this.alarmDateTime,
     required this.dateCreate,
   });
 
@@ -35,6 +37,11 @@ class ModelCourtAlarm {
       alarmHour: json[keyAlarmHour],
       alarmMinute: json[keyAlarmMinute],
       alarmEnabled: json[keyAlarmEnabled] ?? true,
+      alarmDateTime: json['alarmDateTime'] is Timestamp
+          ? json['alarmDateTime']
+          : json['alarmDateTime'] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json['alarmDateTime'])
+              : null,
       dateCreate: json[keyDateCreate] is Timestamp
           ? json[keyDateCreate]
           : Timestamp.fromMillisecondsSinceEpoch(json[keyDateCreate]),
@@ -50,6 +57,7 @@ class ModelCourtAlarm {
     keyAlarmHour: alarmHour,
     keyAlarmMinute: alarmMinute,
     keyAlarmEnabled: alarmEnabled,
+    keyAlarmDateTime: alarmDateTime,
     keyDateCreate: dateCreate,
   };
 
@@ -62,6 +70,7 @@ class ModelCourtAlarm {
     int? alarmHour,
     int? alarmMinute,
     bool? alarmEnabled,
+    Timestamp? alarmDateTime,
     Timestamp? dateCreate,
   }) {
     return ModelCourtAlarm(
@@ -73,6 +82,7 @@ class ModelCourtAlarm {
       alarmHour: alarmHour ?? this.alarmHour,
       alarmMinute: alarmMinute ?? this.alarmMinute,
       alarmEnabled: alarmEnabled ?? this.alarmEnabled,
+      alarmDateTime: alarmDateTime ?? this.alarmDateTime,
       dateCreate: dateCreate ?? this.dateCreate,
     );
   }
