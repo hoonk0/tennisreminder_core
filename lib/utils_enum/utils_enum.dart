@@ -251,10 +251,8 @@ class UtilsEnum {
         return '매달 특정일';
       case ReservationRuleType.daysBeforePlay:
         return '플레이일 기준 며칠 전';
-      case ReservationRuleType.lastDayOfMonth:
-        return '매달 마지막날';
       case ReservationRuleType.nthWeekdayOfMonth:
-        return '매달 n번째 요일';
+        return '매달 n번째 n요일';
       case ReservationRuleType.etc:
         return '기타';
     }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../value/enum.dart';
 import '../value/keys.dart';
 import 'model_court_alarm.dart';
+import 'model_court_reservation.dart';
 
 class ModelCourt {
   final String uid;
@@ -22,7 +23,7 @@ class ModelCourt {
   final String? courtDistrict;
   final List<ModelCourtAlarm>? courtAlarms; // ✅ 알림 리스트 추가
   final Map<String, dynamic>? weatherInfo;
-  final ReservationRuleType? reservationRuleType;
+  final ModelCourtReservation? reservationInfo;
 
   const ModelCourt({
     required this.uid,
@@ -43,7 +44,7 @@ class ModelCourt {
     this.courtDistrict,
     this.courtAlarms,
     this.weatherInfo,
-    this.reservationRuleType,
+    this.reservationInfo,
   });
 
   factory ModelCourt.fromJson(Map<String, dynamic> json) {
@@ -60,11 +61,11 @@ class ModelCourt {
       courtName: json[keyCourtName] ?? '',
       courtAddress: json[keyCourtAddress] ?? '',
       courtInfo: json[keyCourtInfo] ?? '',
-      courtInfo1: json['courtInfo1'] as String?,
-      courtInfo2: json['courtInfo2'] as String?,
-      courtInfo3: json['courtInfo3'] as String?,
-      courtInfo4: json['courtInfo4'] as String?,
-      reservationSchedule: json['reservationSchedule'] as String?,
+      courtInfo1: json[keyCourtInfo1] as String?,
+      courtInfo2: json[keyCourtInfo2] as String?,
+      courtInfo3: json[keyCourtInfo3] as String?,
+      courtInfo4: json[keyCourtInfo4] as String?,
+      reservationSchedule: json[keyReservationSchedule] as String?,
       reservationUrl: json[keyReservationUrl] ?? '',
       likedUserUids: List<String>.from(json[keyLikedUserUids] ?? []),
       imageUrls: List<String>.from(json[keyImageUrls] ?? []),
@@ -72,9 +73,10 @@ class ModelCourt {
       courtAlarms: (json[keyCourtAlarms] as List?)
           ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
           .toList(),
-      weatherInfo: json['weather_info'] as Map<String, dynamic>?,
-      reservationRuleType: json['reservationRuleType'] != null
-          ? ReservationRuleType.values.byName(json['reservationRuleType'])
+      weatherInfo: json[keyWeatherInfo] as Map<String, dynamic>?,
+      reservationInfo: json[keyReservationInfo] != null
+          ? ModelCourtReservation.fromJson(
+              Map<String, dynamic>.from(json[keyReservationInfo]))
           : null,
     );
   }
@@ -99,7 +101,7 @@ class ModelCourt {
       keyCourtDistrict: courtDistrict,
       keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(), // ✅ 추가
       keyWeatherInfo: weatherInfo,
-      keyReservationRuleType: reservationRuleType?.name,
+      keyReservationInfo: reservationInfo?.toJson(),
     };
   }
 
@@ -123,7 +125,7 @@ class ModelCourt {
     String? courtDistrict,
     List<ModelCourtAlarm>? courtAlarms, // ✅ 추가
     Map<String, dynamic>? weatherInfo,
-    ReservationRuleType? reservationRuleType,
+    ModelCourtReservation? reservationInfo,
   }) {
     return ModelCourt(
       uid: uid ?? this.uid,
@@ -146,7 +148,7 @@ class ModelCourt {
           : '',
       courtAlarms: courtAlarms ?? this.courtAlarms,
       weatherInfo: weatherInfo ?? this.weatherInfo,
-      reservationRuleType: reservationRuleType ?? this.reservationRuleType,
+      reservationInfo: reservationInfo ?? this.reservationInfo,
     );
   }
 }

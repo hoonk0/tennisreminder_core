@@ -59,7 +59,6 @@ enum Weekday {
 enum ReservationRuleType {
   fixedDayEachMonth,    // 매달 특정일
   daysBeforePlay,       // 플레이 날짜 기준 n일 전
-  lastDayOfMonth,       // 매달 마지막 날
   nthWeekdayOfMonth,    // 매달 n번째 특정 요일
   etc,                  // 기타
 }
