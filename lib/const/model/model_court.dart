@@ -10,10 +10,14 @@ class ModelCourt {
   final String courtName;
   final String courtAddress;
   final String courtInfo;
+  final String? courtInfo1;
+  final String? courtInfo2;
+  final String? courtInfo3;
+  final String? courtInfo4;
+  final String? reservationSchedule;
   final String reservationUrl;
   final List<String>? likedUserUids;
   final List<String>? imageUrls;
-  final Map<String, dynamic>? extraInfo;
   final String? courtDistrict;
   final List<ModelCourtAlarm>? courtAlarms; // ✅ 알림 리스트 추가
   final Map<String, dynamic>? weatherInfo;
@@ -26,10 +30,14 @@ class ModelCourt {
     required this.courtName,
     required this.courtAddress,
     required this.courtInfo,
+    this.courtInfo1,
+    this.courtInfo2,
+    this.courtInfo3,
+    this.courtInfo4,
+    this.reservationSchedule,
     required this.reservationUrl,
     this.likedUserUids,
     this.imageUrls,
-    this.extraInfo,
     this.courtDistrict,
     this.courtAlarms,
     this.weatherInfo,
@@ -49,10 +57,14 @@ class ModelCourt {
       courtName: json[keyCourtName] ?? '',
       courtAddress: json[keyCourtAddress] ?? '',
       courtInfo: json[keyCourtInfo] ?? '',
+      courtInfo1: json['courtInfo1'] as String?,
+      courtInfo2: json['courtInfo2'] as String?,
+      courtInfo3: json['courtInfo3'] as String?,
+      courtInfo4: json['courtInfo4'] as String?,
+      reservationSchedule: json['reservationSchedule'] as String?,
       reservationUrl: json[keyReservationUrl] ?? '',
       likedUserUids: List<String>.from(json[keyLikedUserUids] ?? []),
       imageUrls: List<String>.from(json[keyImageUrls] ?? []),
-      extraInfo: json[keyExtraInfo] as Map<String, dynamic>?,
       courtDistrict: district,
       courtAlarms: (json[keyCourtAlarms] as List?)
           ?.map((e) => ModelCourtAlarm.fromJson(Map<String, dynamic>.from(e)))
@@ -70,10 +82,14 @@ class ModelCourt {
       keyCourtName: courtName,
       keyCourtAddress: courtAddress,
       keyCourtInfo: courtInfo,
+      'courtInfo1': courtInfo1,
+      'courtInfo2': courtInfo2,
+      'courtInfo3': courtInfo3,
+      'courtInfo4': courtInfo4,
+      'reservationSchedule': reservationSchedule,
       keyReservationUrl: reservationUrl,
       keyLikedUserUids: likedUserUids,
       keyImageUrls: imageUrls ?? [],
-      keyExtraInfo: extraInfo,
       keyCourtDistrict: courtDistrict,
       keyCourtAlarms: courtAlarms?.map((e) => e.toJson()).toList(), // ✅ 추가
       keyWeatherInfo: weatherInfo,
@@ -88,6 +104,11 @@ class ModelCourt {
     String? courtName,
     String? courtAddress,
     String? courtInfo,
+    String? courtInfo1,
+    String? courtInfo2,
+    String? courtInfo3,
+    String? courtInfo4,
+    String? reservationSchedule,
     String? reservationUrl,
     List<String>? likedUserUids,
     List<String>? imageUrls,
@@ -104,10 +125,14 @@ class ModelCourt {
       courtName: courtName ?? this.courtName,
       courtAddress: courtAddress ?? this.courtAddress,
       courtInfo: courtInfo ?? this.courtInfo,
+      courtInfo1: courtInfo1 ?? this.courtInfo1,
+      courtInfo2: courtInfo2 ?? this.courtInfo2,
+      courtInfo3: courtInfo3 ?? this.courtInfo3,
+      courtInfo4: courtInfo4 ?? this.courtInfo4,
+      reservationSchedule: reservationSchedule ?? this.reservationSchedule,
       reservationUrl: reservationUrl ?? this.reservationUrl,
       likedUserUids: likedUserUids ?? this.likedUserUids,
       imageUrls: imageUrls ?? this.imageUrls,
-      extraInfo: extraInfo ?? this.extraInfo,
       courtDistrict: (courtAddress ?? this.courtAddress).split(' ').length > 1
           ? (courtAddress ?? this.courtAddress).split(' ')[1]
           : '',
