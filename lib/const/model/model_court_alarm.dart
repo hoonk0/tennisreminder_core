@@ -37,10 +37,10 @@ class ModelCourtAlarm {
       alarmHour: json[keyAlarmHour] is int ? json[keyAlarmHour] : null,
       alarmMinute: json[keyAlarmMinute] is int ? json[keyAlarmMinute] : null,
       alarmEnabled: json[keyAlarmEnabled] ?? true,
-      alarmDateTime: json['alarmDateTime'] is Timestamp
-          ? json['alarmDateTime']
-          : json['alarmDateTime'] != null
-              ? Timestamp.fromMillisecondsSinceEpoch(json['alarmDateTime'])
+      alarmDateTime: json[keyAlarmDateTime] is Timestamp
+          ? json[keyAlarmDateTime]
+          : json[keyAlarmDateTime] != null
+              ? Timestamp.fromMillisecondsSinceEpoch(json[keyAlarmDateTime])
               : null,
       dateCreate: json[keyDateCreate] is Timestamp
           ? json[keyDateCreate]
