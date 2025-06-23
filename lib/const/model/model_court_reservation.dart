@@ -31,8 +31,8 @@ class ModelCourtReservation {
       reservationHour: json.containsKey(keyReservationHour) ? json[keyReservationHour] : null,
       reservationDay: json[keyReservationDay],
       daysBeforePlay: json[keyDaysBeforePlay],
-      reservationWeekNumber: json['reservationWeekNumber'],
-      reservationWeekday: json['reservationWeekday'],
+      reservationWeekNumber: json[keyReservationWeekNumber],
+      reservationWeekday: json[keyReservationWeekDay],
       dateCreated: json[keyReservationDateCreated] != null
           ? Timestamp.fromMillisecondsSinceEpoch(json[keyReservationDateCreated])
           : null,
@@ -45,7 +45,7 @@ class ModelCourtReservation {
     if (reservationHour != null) keyReservationHour: reservationHour,
     keyReservationDay: reservationDay,
     keyDaysBeforePlay: daysBeforePlay,
-    if (reservationWeekNumber != null) 'reservationWeekNumber': reservationWeekNumber,
-    if (reservationWeekday != null) 'reservationWeekday': reservationWeekday,
+    if (reservationWeekNumber != null) keyReservationWeekNumber: reservationWeekNumber,
+    if (reservationWeekday != null) keyReservationWeekDay: reservationWeekday,
     keyReservationDateCreated: dateCreated?.millisecondsSinceEpoch,
   };}
