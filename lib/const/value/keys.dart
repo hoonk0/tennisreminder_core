@@ -48,3 +48,4 @@ const String keyReservationWeekDay = 'reservation_week_day';
 const String keyOpinionUid = 'opinion_uid';
 const String keyTitle = 'title';
 const String keyContent = 'content';
+const String keyUserOpinion = 'user_opinion'
