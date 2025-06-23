@@ -43,3 +43,5 @@ const String keyDaysBeforePlay = 'daysBefore_play';
 const String keyReservationDateCreated = 'reservation_date_created';
 const String keyReservationInfo='reservation_info';
 const String keyAlarmDateTime = 'alarm_date_time';
+const String keyReservationWeekNumber = 'reservation_week_number';
+const String keyReservationWeekDay = 'reservation_week_day';
