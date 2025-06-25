@@ -29,10 +29,10 @@ class ModelCourtAlarm {
 
   factory ModelCourtAlarm.fromJson(Map<String, dynamic> json) {
     return ModelCourtAlarm(
-      courtUid: json[keyCourtUid],
-      userUid: json[keyUserUid],
-      fcmToken: json[keyFcmToken],
-      courtName: json[keyCourtName],
+      courtUid: json[keyCourtUid] ?? '',
+      userUid: json[keyUserUid] ?? '',
+      fcmToken: json[keyFcmToken] ?? '',
+      courtName: json[keyCourtName] ?? '',
       alarmWeekday: json[keyAlarmWeekday] is int ? json[keyAlarmWeekday] : null,
       alarmHour: json[keyAlarmHour] is int ? json[keyAlarmHour] : null,
       alarmMinute: json[keyAlarmMinute] is int ? json[keyAlarmMinute] : null,
