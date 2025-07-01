@@ -4,7 +4,7 @@ import '../value/keys.dart';
 
 class ModelCourtAlarm {
   final String courtUid;
-  final String userUid;
+  final String uid;
   final String fcmToken;
   final String courtName;
   final int? alarmWeekday;
@@ -16,7 +16,7 @@ class ModelCourtAlarm {
 
   const ModelCourtAlarm({
     required this.courtUid,
-    required this.userUid,
+    required this.uid,
     required this.fcmToken,
     required this.courtName,
     this.alarmWeekday,
@@ -30,7 +30,7 @@ class ModelCourtAlarm {
   factory ModelCourtAlarm.fromJson(Map<String, dynamic> json) {
     return ModelCourtAlarm(
       courtUid: json[keyCourtUid] ?? '',
-      userUid: json[keyUserUid] ?? '',
+      uid: json[keyUid] ?? '',
       fcmToken: json[keyFcmToken] ?? '',
       courtName: json[keyCourtName] ?? '',
       alarmWeekday: json[keyAlarmWeekday] is int ? json[keyAlarmWeekday] : null,
@@ -50,7 +50,7 @@ class ModelCourtAlarm {
 
   Map<String, dynamic> toJson() => {
     keyCourtUid: courtUid,
-    keyUserUid: userUid,
+    keyUid: uid,
     keyFcmToken: fcmToken,
     keyCourtName: courtName,
     if (alarmWeekday != null) keyAlarmWeekday: alarmWeekday,
@@ -75,7 +75,7 @@ class ModelCourtAlarm {
   }) {
     return ModelCourtAlarm(
       courtUid: courtUid ?? this.courtUid,
-      userUid: userUid ?? this.userUid,
+      uid: userUid ?? this.uid,
       fcmToken: fcmToken ?? this.fcmToken,
       courtName: courtName ?? this.courtName,
       alarmWeekday: alarmWeekday ?? this.alarmWeekday,
