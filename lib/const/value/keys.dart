@@ -49,4 +49,4 @@ const String keyOpinionUid = 'opinion_uid';
 const String keyTitle = 'title';
 const String keyContent = 'content';
 const String keyUserOpinion = 'user_opinion';
-const String keyUsersAlarm = 'user_alarm';
+const String keyUsersAlarm = 'users_alarm';
