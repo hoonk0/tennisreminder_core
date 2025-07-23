@@ -50,3 +50,4 @@ const String keyTitle = 'title';
 const String keyContent = 'content';
 const String keyUserOpinion = 'user_opinion';
 const String keyUsersAlarm = 'users_alarm';
+const String keyNickName = 'nick_name';

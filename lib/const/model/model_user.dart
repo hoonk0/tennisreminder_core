@@ -44,7 +44,7 @@ class ModelUser {
       keyPassword: pw,
       keyLoginType: loginType.name,
       keyUserType: userType.name,
-      'nickname': nickname,
+      keyNickName: nickname,
     };
   }
 
