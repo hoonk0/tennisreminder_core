@@ -10,6 +10,7 @@ class ModelUser {
   final String? pw;
   final LoginType loginType;
   final UserType userType;
+  final String? nickname;
 
   const ModelUser({
     required this.uid,
@@ -18,6 +19,7 @@ class ModelUser {
     this.pw,
     required this.loginType,
     this.userType = UserType.user,
+    this.nickname,
   });
 
   factory ModelUser.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class ModelUser {
       pw: json[keyPassword] as String?,
       loginType: LoginType.values.firstWhere((e) => e.name == json[keyLoginType]),
       userType: UserType.values.firstWhere((e) => e.name == json[keyUserType]),
+      nickname: json['nickname'] as String?,
     );
   }
 
@@ -41,6 +44,7 @@ class ModelUser {
       keyPassword: pw,
       keyLoginType: loginType.name,
       keyUserType: userType.name,
+      'nickname': nickname,
     };
   }
 
@@ -51,6 +55,7 @@ class ModelUser {
     String? pw,
     LoginType? loginType,
     UserType? userType,
+    String? nickname,
   }) {
     return ModelUser(
       uid: uid ?? this.uid,
@@ -59,6 +64,7 @@ class ModelUser {
       pw: pw ?? this.pw,
       loginType: loginType ?? this.loginType,
       userType: userType ?? this.userType,
+      nickname: nickname ?? this.nickname,
     );
   }
 }
