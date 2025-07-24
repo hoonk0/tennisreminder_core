@@ -51,3 +51,16 @@ const String keyContent = 'content';
 const String keyUserOpinion = 'user_opinion';
 const String keyUsersAlarm = 'users_alarm';
 const String keyNickName = 'nick_name';
+
+const String keyPostId = 'post_id';
+const String keyWriterId = 'writer_id';
+const String keyWriterNickname = 'writer_nickname';
+const String keyCreatedAt = 'created_at';
+const String keyIsExchange = 'is_exchange';
+const String keyTransferCourtName = 'transfer_court_name';
+const String keyTransferDate = 'transfer_date';
+const String keyTransferStartTime = 'transfer_start_time';
+const String keyTransferEndTime = 'transfer_end_time';
+const String keyContact = 'contact';
+const String keyTransferExtraInfo = 'transfer_extra_info';
+const String keyTransferBoardWriter = 'transfer_board_writer';
