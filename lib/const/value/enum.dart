@@ -62,3 +62,11 @@ enum ReservationRuleType {
   nthWeekdayOfMonth,    // 매달 n번째 특정 요일
   etc,                  // 기타
 }
+
+///교환옵션
+enum TransferStatus {
+  exchange,
+  transfer,
+  exchangeFinished,
+  transferFinished,
+}

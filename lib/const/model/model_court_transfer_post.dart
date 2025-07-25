@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../value/enum.dart';
 import '../value/keys.dart';
 import 'model_user.dart';
+
 
 class ModelCourtTransferPost {
   final String postId;
   final ModelUser transferBoardWriter;
   final Timestamp createdAt;
 
-  final bool isExchange; // true = 교환, false = 양도
-  final bool isFinished;
+  final TransferStatus status;
 
   final String courtName; // 사용자가 직접 입력한 코트 이름
   final DateTime date; // 예약 날짜
@@ -24,8 +25,7 @@ class ModelCourtTransferPost {
     required this.postId,
     required this.transferBoardWriter,
     required this.createdAt,
-    required this.isExchange,
-    required this.isFinished,
+    required this.status,
     required this.courtName,
     required this.date,
     required this.startTime,
@@ -44,8 +44,7 @@ class ModelCourtTransferPost {
       createdAt: json[keyCreatedAt] is Timestamp
           ? json[keyCreatedAt]
           : Timestamp.fromMillisecondsSinceEpoch(json[keyCreatedAt]),
-      isExchange: json[keyIsExchange] as bool,
-      isFinished: json.containsKey(keyIsFinished) ? json[keyIsFinished] as bool : false,
+      status: _transferStatusFromJson(json),
       courtName: json[keyTransferCourtName] as String,
       date: DateTime.parse(json[keyTransferDate] as String),
       startTime: TimeOfDay(
@@ -61,13 +60,21 @@ class ModelCourtTransferPost {
     );
   }
 
+  static TransferStatus _transferStatusFromJson(Map<String, dynamic> json) {
+    final isExchange = json[keyIsExchange] as bool;
+    final isFinished = json.containsKey(keyIsFinished) ? json[keyIsFinished] as bool : false;
+    if (isExchange && isFinished) return TransferStatus.exchangeFinished;
+    if (!isExchange && isFinished) return TransferStatus.transferFinished;
+    return isExchange ? TransferStatus.exchange : TransferStatus.transfer;
+  }
+
   Map<String, dynamic> toJson() {
     return {
       keyPostId: postId,
       keyTransferBoardWriter: transferBoardWriter.toJson(),
       keyCreatedAt: createdAt,
-      keyIsExchange: isExchange,
-      keyIsFinished: isFinished,
+      keyIsExchange: status == TransferStatus.exchange || status == TransferStatus.exchangeFinished,
+      keyIsFinished: status == TransferStatus.exchangeFinished || status == TransferStatus.transferFinished,
       keyTransferCourtName: courtName,
       keyTransferDate: date.toIso8601String(),
       keyTransferStartTime:
@@ -83,8 +90,7 @@ class ModelCourtTransferPost {
     String? postId,
     ModelUser? writer,
     Timestamp? createdAt,
-    bool? isExchange,
-    bool? isFinished,
+    TransferStatus? status,
     String? courtName,
     DateTime? date,
     TimeOfDay? startTime,
@@ -96,8 +102,7 @@ class ModelCourtTransferPost {
       postId: postId ?? this.postId,
       transferBoardWriter: writer ?? this.transferBoardWriter,
       createdAt: createdAt ?? this.createdAt,
-      isExchange: isExchange ?? this.isExchange,
-      isFinished: isFinished ?? this.isFinished,
+      status: status ?? this.status,
       courtName: courtName ?? this.courtName,
       date: date ?? this.date,
       startTime: startTime ?? this.startTime,
