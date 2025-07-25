@@ -9,8 +9,8 @@ class ModelCourtTransferPost {
   final ModelUser transferBoardWriter;
   final Timestamp createdAt;
 
-  final bool isExchange; //
-  final bool isTransfer;
+  final bool? isExchange; //
+  final bool? isTransfer;
 
   final String courtName; // 사용자가 직접 입력한 코트 이름
   final DateTime date; // 예약 날짜
@@ -24,8 +24,8 @@ class ModelCourtTransferPost {
     required this.postId,
     required this.transferBoardWriter,
     required this.createdAt,
-    this.isExchange = false,
-    this.isTransfer = false,
+    this.isExchange,
+    this.isTransfer,
     required this.courtName,
     required this.date,
     required this.startTime,
