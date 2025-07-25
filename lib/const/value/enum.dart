@@ -1,3 +1,5 @@
+import 'keys.dart';
+
 /// 로그인 유형
 enum LoginType {
   apple,
@@ -69,4 +71,11 @@ enum TransferStatus {
   transfer,
   exchangeFinished,
   transferFinished,
+}
+TransferStatus getTransferStatus(Map<String, dynamic> data) {
+  final isExchange = data[keyIsExchange] as bool? ?? false;
+  final isFinished = data[keyIsFinished] as bool? ?? false;
+  if (isExchange && isFinished) return TransferStatus.exchangeFinished;
+  if (!isExchange && isFinished) return TransferStatus.transferFinished;
+  return isExchange ? TransferStatus.exchange : TransferStatus.transfer;
 }
