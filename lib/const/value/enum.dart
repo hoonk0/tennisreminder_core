@@ -65,17 +65,10 @@ enum ReservationRuleType {
   etc,                  // 기타
 }
 
-///교환옵션
+/// 교환 옵션 상태
 enum TransferStatus {
-  exchange,
-  transfer,
-  exchangeFinished,
-  transferFinished,
+  exchange, // 교환
+  transfer, // 양도
+  finished, // 완료
 }
-TransferStatus getTransferStatus(Map<String, dynamic> data) {
-  final isExchange = data[keyIsExchange] as bool? ?? false;
-  final isFinished = data[keyIsFinished] as bool? ?? false;
-  if (isExchange && isFinished) return TransferStatus.exchangeFinished;
-  if (!isExchange && isFinished) return TransferStatus.transferFinished;
-  return isExchange ? TransferStatus.exchange : TransferStatus.transfer;
-}
+
