@@ -65,3 +65,4 @@ const String keyContact = 'contact';
 const String keyTransferExtraInfo = 'transfer_extra_info';
 const String keyTransferBoardWriter = 'transfer_board_writer';
 const String keyCourtTransferBoard = 'court_transfer_board';
+const String keyIsFinished = 'transfer_finished';

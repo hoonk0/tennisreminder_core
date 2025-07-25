@@ -10,6 +10,7 @@ class ModelCourtTransferPost {
   final Timestamp createdAt;
 
   final bool isExchange; // true = 교환, false = 양도
+  final bool isFinished;
 
   final String courtName; // 사용자가 직접 입력한 코트 이름
   final DateTime date; // 예약 날짜
@@ -24,6 +25,7 @@ class ModelCourtTransferPost {
     required this.transferBoardWriter,
     required this.createdAt,
     required this.isExchange,
+    required this.isFinished,
     required this.courtName,
     required this.date,
     required this.startTime,
@@ -43,6 +45,7 @@ class ModelCourtTransferPost {
           ? json[keyCreatedAt]
           : Timestamp.fromMillisecondsSinceEpoch(json[keyCreatedAt]),
       isExchange: json[keyIsExchange] as bool,
+      isFinished: json.containsKey(keyIsFinished) ? json[keyIsFinished] as bool : false,
       courtName: json[keyTransferCourtName] as String,
       date: DateTime.parse(json[keyTransferDate] as String),
       startTime: TimeOfDay(
@@ -64,6 +67,7 @@ class ModelCourtTransferPost {
       keyTransferBoardWriter: transferBoardWriter.toJson(),
       keyCreatedAt: createdAt,
       keyIsExchange: isExchange,
+      keyIsFinished: isFinished,
       keyTransferCourtName: courtName,
       keyTransferDate: date.toIso8601String(),
       keyTransferStartTime:
@@ -80,6 +84,7 @@ class ModelCourtTransferPost {
     ModelUser? writer,
     Timestamp? createdAt,
     bool? isExchange,
+    bool? isFinished,
     String? courtName,
     DateTime? date,
     TimeOfDay? startTime,
@@ -92,6 +97,7 @@ class ModelCourtTransferPost {
       transferBoardWriter: writer ?? this.transferBoardWriter,
       createdAt: createdAt ?? this.createdAt,
       isExchange: isExchange ?? this.isExchange,
+      isFinished: isFinished ?? this.isFinished,
       courtName: courtName ?? this.courtName,
       date: date ?? this.date,
       startTime: startTime ?? this.startTime,
