@@ -247,11 +247,11 @@ class UtilsEnum {
   static String getNameFromTradeState(TradeState state) {
     switch (state) {
       case TradeState.transferOngoing:
-        return '양도중';
+        return '양도';
       case TradeState.transferDone:
         return '양도완료';
       case TradeState.exchangeOngoing:
-        return '교환중';
+        return '교환';
       case TradeState.exchangeDone:
         return '교환완료';
     }
