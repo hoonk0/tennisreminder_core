@@ -65,10 +65,11 @@ enum ReservationRuleType {
   etc,                  // 기타
 }
 
-/// 교환 옵션 상태
-enum TransferStatus {
-  exchange, // 교환
-  transfer, // 양도
-  finished, // 완료
+/// 게시판 상태 (양도/교환 + 진행/완료)
+enum TradeState {
+  transferOngoing,  // 양도 진행 중
+  transferDone,     // 양도 완료
+  exchangeOngoing,  // 교환 진행 중
+  exchangeDone,     // 교환 완료
 }
 

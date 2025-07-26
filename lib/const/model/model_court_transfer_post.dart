@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tennisreminder_core/const/value/enum.dart';
 
 import '../value/keys.dart';
 import 'model_user.dart';
@@ -9,8 +10,7 @@ class ModelCourtTransferPost {
   final ModelUser transferBoardWriter;
   final Timestamp createdAt;
 
-  final bool? isExchange; //
-  final bool? isTransfer;
+  final TradeState tradeState;
 
   final String courtName; // 사용자가 직접 입력한 코트 이름
   final DateTime date; // 예약 날짜
@@ -24,8 +24,7 @@ class ModelCourtTransferPost {
     required this.postId,
     required this.transferBoardWriter,
     required this.createdAt,
-    this.isExchange,
-    this.isTransfer,
+    required this.tradeState,
     required this.courtName,
     required this.date,
     required this.startTime,
@@ -44,8 +43,10 @@ class ModelCourtTransferPost {
       createdAt: json[keyCreatedAt] is Timestamp
           ? json[keyCreatedAt]
           : Timestamp.fromMillisecondsSinceEpoch(json[keyCreatedAt]),
-      isExchange: json[keyIsExchange] as bool,
-      isTransfer: json[keyIsTransfer] as bool,
+      tradeState: TradeState.values.firstWhere(
+            (e) => e.name == json[keyTradeState],
+        orElse: () => TradeState.transferOngoing,
+      ),
       courtName: json[keyTransferCourtName] as String,
       date: DateTime.parse(json[keyTransferDate] as String),
       startTime: TimeOfDay(
@@ -66,8 +67,7 @@ class ModelCourtTransferPost {
       keyPostId: postId,
       keyTransferBoardWriter: transferBoardWriter.toJson(),
       keyCreatedAt: createdAt,
-      keyIsExchange: isExchange,
-      keyIsFinished: isTransfer,
+      keyTradeState : tradeState.name,
       keyTransferCourtName: courtName,
       keyTransferDate: date.toIso8601String(),
       keyTransferStartTime:
@@ -81,10 +81,9 @@ class ModelCourtTransferPost {
 
   ModelCourtTransferPost copyWith({
     String? postId,
-    ModelUser? writer,
+    ModelUser? transferBoardWriter,
     Timestamp? createdAt,
-    bool? isExchange,
-    bool? isFinished,
+    TradeState? tradeState,
     String? courtName,
     DateTime? date,
     TimeOfDay? startTime,
@@ -94,10 +93,9 @@ class ModelCourtTransferPost {
   }) {
     return ModelCourtTransferPost(
       postId: postId ?? this.postId,
-      transferBoardWriter: writer ?? this.transferBoardWriter,
+      transferBoardWriter: transferBoardWriter ?? this.transferBoardWriter,
       createdAt: createdAt ?? this.createdAt,
-      isExchange: isExchange ?? this.isExchange,
-      isTransfer: isFinished ?? this.isTransfer,
+      tradeState: tradeState ?? this.tradeState,
       courtName: courtName ?? this.courtName,
       date: date ?? this.date,
       startTime: startTime ?? this.startTime,

@@ -68,3 +68,4 @@ const String keyCourtTransferBoard = 'court_transfer_board';
 const String keyIsFinished = 'is_finished';
 const String keyTransferStatus = 'transfer_status';
 const String keyIsTransfer = 'is_transfer';
+const String keyTradeState = 'trade_state';

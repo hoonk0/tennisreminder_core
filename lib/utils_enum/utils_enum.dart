@@ -243,20 +243,22 @@ class UtilsEnum {
     }
   }
 
-
-  /// 예약 규칙 enum → 한글명 반환
-  static String getNameFromReservationRuleType(ReservationRuleType type) {
-    switch (type) {
-      case ReservationRuleType.fixedDayEachMonth:
-        return '매달 특정일';
-      case ReservationRuleType.daysBeforePlay:
-        return '플레이일 기준 며칠 전';
-      case ReservationRuleType.nthWeekdayOfMonth:
-        return '매달 n번째 n요일';
-      case ReservationRuleType.etc:
-        return '기타';
+  /// TradeState enum → 한글명 반환
+  static String getNameFromTradeState(TradeState state) {
+    switch (state) {
+      case TradeState.transferOngoing:
+        return '양도중';
+      case TradeState.transferDone:
+        return '양도완료';
+      case TradeState.exchangeOngoing:
+        return '교환중';
+      case TradeState.exchangeDone:
+        return '교환완료';
     }
   }
+
+
+
 
 }
 
