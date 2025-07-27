@@ -257,6 +257,17 @@ class UtilsEnum {
   }
 
 
+  /// Firestore 문자열 값을 받아 TradeState → 한글명 반환
+  static String getNameFromTradeStateRaw(dynamic raw) {
+    final name = (raw ?? '').toString().trim();
+    final state = TradeState.values.firstWhere(
+      (e) => e.name == name,
+      orElse: () => TradeState.transferOngoing, // 기본값 지정
+    );
+    return getNameFromTradeState(state);
+  }
+
+
 
 
 }
