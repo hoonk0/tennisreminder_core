@@ -248,12 +248,10 @@ class UtilsEnum {
     switch (state) {
       case TradeState.exchangeOngoing:
         return '교환';
-      case TradeState.exchangeDone:
-        return '교환완료';
       case TradeState.transferOngoing:
         return '양도';
-      case TradeState.transferDone:
-        return '양도완료';
+      case TradeState.done:
+        return '완료';
 
     }
   }
