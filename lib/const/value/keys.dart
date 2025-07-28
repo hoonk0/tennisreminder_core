@@ -69,3 +69,13 @@ const String keyIsFinished = 'is_finished';
 const String keyTransferStatus = 'transfer_status';
 const String keyIsTransfer = 'is_transfer';
 const String keyTradeState = 'trade_state';
+
+const String keyRacketPostId = 'racketPostId';
+const String keyRacketCreatedAt = 'createdAt';
+const String keyRacketWriterUid = 'writerUid';
+const String keyRacketBrand = 'racketBrand';
+const String keyRacketName = 'racketName';
+const String keyRacketWeight = 'racketWeight';
+const String keyRacketHeadSize = 'racketHeadSize';
+const String keyRacketOpinion = 'racketOpinion';
+const String keyWriterUid = 'wrtier_uid';
