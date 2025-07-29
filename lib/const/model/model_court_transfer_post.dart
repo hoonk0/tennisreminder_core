@@ -41,8 +41,8 @@ class ModelCourtTransferPost {
       postId: json[keyPostId] as String,
       transferBoardWriter: ModelUser.fromJson(json[keyTransferBoardWriter]),
       createdAt: json[keyCreatedAt] is Timestamp
-          ? json[keyCreatedAt]
-          : Timestamp.fromMillisecondsSinceEpoch(json[keyCreatedAt]),
+          ? json[keyCreatedAt] as Timestamp
+          : Timestamp.fromDate(DateTime.parse(json[keyCreatedAt] as String)),
       tradeState: TradeState.values.firstWhere(
             (e) => e.name == json[keyTradeState],
         orElse: () => TradeState.transferOngoing,
