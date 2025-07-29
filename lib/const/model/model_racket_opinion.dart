@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../value/keys.dart';
 
 class ModelRacketOpinion {
   final String? racketOpinion;
   final String racketPostId;
-  final DateTime createdAt;
+  final Timestamp createdAt;
   final String writerUid;
   final String racketBrand;
   final String racketName;
@@ -25,7 +27,9 @@ class ModelRacketOpinion {
     return ModelRacketOpinion(
       racketOpinion: json[keyRacketOpinion] as String?,
       racketPostId: json[keyRacketPostId] as String,
-      createdAt: DateTime.parse(json[keyCreatedAt] as String),
+      createdAt: json[keyCreatedAt] is Timestamp
+          ? json[keyCreatedAt]
+          : Timestamp.fromMillisecondsSinceEpoch(json[keyCreatedAt]),
       writerUid: json[keyWriterUid] as String,
       racketBrand: json[keyRacketBrand] as String,
       racketName: json[keyRacketName] as String,
@@ -38,7 +42,7 @@ class ModelRacketOpinion {
     return {
       keyRacketOpinion: racketOpinion,
       keyRacketPostId: racketPostId,
-      keyCreatedAt: createdAt.toIso8601String(),
+      keyCreatedAt: createdAt,
       keyWriterUid: writerUid,
       keyRacketBrand: racketBrand,
       keyRacketName: racketName,
@@ -50,7 +54,7 @@ class ModelRacketOpinion {
   ModelRacketOpinion copyWith({
     String? opinion,
     String? postId,
-    DateTime? createdAt,
+    Timestamp? createdAt,
     String? writerUid,
     String? racketBrand,
     String? racketName,
