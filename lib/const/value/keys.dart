@@ -79,3 +79,5 @@ const String keyRacketWeight = 'racketWeight';
 const String keyRacketHeadSize = 'racketHeadSize';
 const String keyRacketOpinion = 'racketOpinion';
 const String keyWriterUid = 'wrtier_uid';
+
+const String keyRacketOpinionBoard = 'racket_opinion_board';
