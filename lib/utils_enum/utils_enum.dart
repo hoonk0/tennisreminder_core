@@ -1,3 +1,34 @@
+  /// RacketBrand enum → 한글명 반환
+  static String getNameFromRacketBrand(RacketBrand brand) {
+    switch (brand) {
+      case RacketBrand.wilson:
+        return 'Wilson';
+      case RacketBrand.babolat:
+        return 'Babolat';
+      case RacketBrand.head:
+        return 'Head';
+      case RacketBrand.yonex:
+        return 'Yonex';
+      case RacketBrand.prince:
+        return 'Prince';
+      case RacketBrand.tecnifibre:
+        return 'Tecnifibre';
+      case RacketBrand.dunlop:
+        return 'Dunlop';
+      case RacketBrand.volkl:
+        return 'Volkl';
+      case RacketBrand.prokennex:
+        return 'ProKennex';
+      case RacketBrand.slazenger:
+        return 'Slazenger';
+      case RacketBrand.solinco:
+        return 'Solinco';
+      case RacketBrand.pacific:
+        return 'Pacific';
+      case RacketBrand.artengo:
+        return 'Artengo';
+    }
+  }
 import '../const/value/enum.dart';
 
 class UtilsEnum {
@@ -275,6 +306,7 @@ class UtilsEnum {
       orElse: () => TradeState.transferOngoing, // 기본값 지정
     );
   }
+
 
 
 
