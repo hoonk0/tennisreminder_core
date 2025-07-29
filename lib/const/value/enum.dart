@@ -73,3 +73,19 @@ enum TradeState {
   // 교환 완료
 }
 
+/// 라켓 브랜드
+enum RacketBrand {
+  Wilson,
+  Babolat,
+  Head,
+  Yonex,
+  Prince,
+  Tecnifibre,
+  Dunlop,
+  Volkl,
+  Prokennex,
+  Slazenger,
+  Solinco,
+  Pacific,
+  Artengo,
+}
