@@ -2,7 +2,7 @@ import '../value/keys.dart';
 
 class ModelRacketOpinion {
   final String? racketOpinion;
-  final String postId;
+  final String racketPostId;
   final DateTime createdAt;
   final String writerUid;
   final String racketBrand;
@@ -12,7 +12,7 @@ class ModelRacketOpinion {
 
   ModelRacketOpinion({
     this.racketOpinion,
-    required this.postId,
+    required this.racketPostId,
     required this.createdAt,
     required this.writerUid,
     required this.racketBrand,
@@ -24,7 +24,7 @@ class ModelRacketOpinion {
   factory ModelRacketOpinion.fromJson(Map<String, dynamic> json) {
     return ModelRacketOpinion(
       racketOpinion: json[keyRacketOpinion] as String?,
-      postId: json[keyRacketPostId] as String,
+      racketPostId: json[keyRacketPostId] as String,
       createdAt: DateTime.parse(json[keyCreatedAt] as String),
       writerUid: json[keyWriterUid] as String,
       racketBrand: json[keyRacketBrand] as String,
@@ -37,7 +37,7 @@ class ModelRacketOpinion {
   Map<String, dynamic> toJson() {
     return {
       keyRacketOpinion: racketOpinion,
-      keyRacketPostId: postId,
+      keyRacketPostId: racketPostId,
       keyCreatedAt: createdAt.toIso8601String(),
       keyWriterUid: writerUid,
       keyRacketBrand: racketBrand,
@@ -59,7 +59,7 @@ class ModelRacketOpinion {
   }) {
     return ModelRacketOpinion(
       racketOpinion: opinion ?? this.racketOpinion,
-      postId: postId ?? this.postId,
+      racketPostId: postId ?? this.racketPostId,
       createdAt: createdAt ?? this.createdAt,
       writerUid: writerUid ?? this.writerUid,
       racketBrand: racketBrand ?? this.racketBrand,
